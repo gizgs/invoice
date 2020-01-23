@@ -14,4 +14,19 @@ class Articles(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+class Invoice(models.Model):
+	invoice_id = models.AutoField(primary_key = True)
+	invoice_user_id = "user_id"
+	invoice_date_of_issue = models.DateField()
+	invoice_nr = models.CharField(max_length = 250)
+	invoice_name = models.CharField(max_length = 250)
+	invoice_netto = models.FloatField()
+	invoice_vat = models.FloatField()
+	invoice_brutto = models.FloatField(default = 100)
+	invoice_place = "nazwa miejscowości"
+	invoice_file = models.FileField()
+
+	def __unicode__(self):
+		return self.invoice_nr
 		

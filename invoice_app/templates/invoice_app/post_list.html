@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Invoice_app</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<h1>To jest lista Artykułów</h1>
+
+	{{invoice}}
+	{{articles}}
+
+{% for invo in invoice %}
+    <div>
+        {{invo}}
+    </div>
+{% endfor %}
+
+
+
+</body>
+</html>

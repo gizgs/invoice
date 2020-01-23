@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from .models import Employee
 from .models import Articles
+from .models import Invoice
 
 
 
@@ -19,4 +20,5 @@ class UserAdmin(BaseUserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Articles)
+admin.site.register(Invoice)
 # Register your models here.

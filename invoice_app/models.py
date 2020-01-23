@@ -15,6 +15,15 @@ class Articles(models.Model):
 	def __unicode__(self):
 		return self.title
 
+
+Place_CHOICES = (
+    ('Żagań', 'Żagań'),
+    ('Krasiczyn', 'Krasiczyn'),
+    ('Kielce', 'Kielce'),
+    ('Żory', 'Żory'),
+    ('Nie dotyczy', 'Nie dotyczy'),
+)
+
 class Invoice(models.Model):
 	invoice_id = models.AutoField(primary_key = True)
 	invoice_user_id = "user_id"
@@ -24,7 +33,7 @@ class Invoice(models.Model):
 	invoice_netto = models.FloatField()
 	invoice_vat = models.FloatField()
 	invoice_brutto = models.FloatField(default = 100)
-	invoice_place = "nazwa miejscowości"
+	invoice_place = models.CharField(max_length=6, choices=Place_CHOICES, default='Nie dotyczy')
 	invoice_file = models.FileField()
 
 	def __unicode__(self):

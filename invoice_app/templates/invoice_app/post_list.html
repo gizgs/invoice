@@ -6,18 +6,35 @@
 </head>
 <body>
 
-	<h1>To jest lista Artykułów</h1>
-
-	{{invoice}}
-	{{articles}}
-
-{% for invo in invoice %}
-    <div>
-        {{invo}}
-    </div>
-{% endfor %}
+	<h1>To jest lista faktur</h1>
 
 
+	<table border="">
+		<tr>
+    		<th>Numer ID faktury</th>
+    		<th>Data publikacji</th>
+    		<th>Numer faktury</th>
+    		<th>Nazwa faktury</th>
+    		<th>Miejsce</th>
+    		<th>Kwota netto</th>
+    		<th>Kwota VAT</th>
+    		<th>Kwota brutto</th>
+    		<th>Plik faktury</th>
+ 		</tr>
+		{% for invo in invoice %}
+		<tr>
+			<td><p>{{invo.invoice_id}}</p></td>
+			<td><p>{{invo.invoice_date_of_issue}}</p></td>
+			<td><p>{{invo.invoice_nr}}</p></td>
+			<td><p>{{invo.invoice_name}}</p></td>
+			<td><p>{{invo.invoice_place}}</p></td>
+			<td><p>{{invo.invoice_netto}}</p></td>
+			<td><p>{{invo.invoice_vat}}</p></td>
+			<td><p>{{invo.invoice_brutto}}</p></td>
+			<td><a href=”pliki/plik.doc”>PLIK</a></td>
+		</tr>
+		{% endfor %}
+	</table>
 
 </body>
 </html>

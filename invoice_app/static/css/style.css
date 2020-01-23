@@ -1,0 +1,35 @@
+table td{
+
+	   border: 1px solid black;
+	   padding: 5px;
+
+}
+
+table th{
+	border: 3px solid red;
+	padding: 5px;
+}
+
+h1 {
+	text-align: center;
+	color: blue;
+	font-size: 40px;
+	font-family:'Lobster';
+	padding-bottom: 30px;
+	padding-left: 100px
+
+
+}
+
+body {
+	padding-left: 15px;
+}
+
+table {
+	text-align: center;
+}
+
+.new {
+	width: 50%;
+	margin: 0 auto;
+}

@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Invoice_app</title>
-	<meta charset="utf-8">
-</head>
-<body>
-
-	<h1>To jest lista faktur</h1>
+{% extends 'invoice_app/base.html' %}
 
 
-	<table border="">
+{% block content %}
+	<table>
 		<tr>
     		<th>Numer ID faktury</th>
     		<th>Data publikacji</th>
@@ -35,6 +28,4 @@
 		</tr>
 		{% endfor %}
 	</table>
-
-</body>
-</html>
+	{% endblock %}

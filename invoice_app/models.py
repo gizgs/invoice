@@ -34,7 +34,7 @@ class Invoice(models.Model):
 	invoice_vat = models.FloatField("Vat")
 	invoice_brutto = models.FloatField("Kwota brutto", default = 100)
 	invoice_place = models.CharField("Miejsce którego dotyczy", max_length=20, choices=Place_CHOICES, default='Nie dotyczy')
-	invoice_file = models.FileField("Plik faktury")
+	#invoice_file = models.FileField("Plik faktury")
 
 	def __unicode__(self):
 		return self.invoice_nr

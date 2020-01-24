@@ -22,12 +22,7 @@ def invoice_detail(request, pk):
 
 
 def invoice_new(request):
-    if request.method == 'POST':
-        form = InvoiceForm(request.POST)
-        if form.is_valid():
-            invoice = form.save()
-            invoice.save()
-            return redirect ('/some/end.html')
-    else:
-        form = InvoiceForm()
-    return render(request, 'invoice_app/end.html', {'form': form})
+    form = InvoiceForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return render(request, 'invoice_app/invoice_edit.html', {'form': form})

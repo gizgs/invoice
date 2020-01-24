@@ -23,19 +23,11 @@ def invoice_detail(request, pk):
 
 def invoice_new(request):
     if request.method == 'POST':
-    form = InvoiceForm()
-    return render(request, 'invoice_app/invoice_edit.html', {'form': form})
-  
-
-  def post_new(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
+        form = InvoiceForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
+            invoice = form.save()
+            invoice.save()
+            return redirect ('/some/end.html')
     else:
-        form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+        form = InvoiceForm()
+    return render(request, 'invoice_app/end.html', {'form': form})

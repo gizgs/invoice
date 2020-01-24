@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Articles, Invoice
+from .models import Articles
+from .models import Invoice
+from .forms import InvoiceForm
 
 # Create your views here.
 def post_list(request):
@@ -15,3 +17,7 @@ def invoice_detail(request, pk):
 	#Invoice.objects.get(pk=pk)
     invoice = get_object_or_404(Invoice, pk=pk)
     return render(request, 'invoice_app/invoice_detail.html', {'invoice': invoice})
+
+def invoice_new(request):
+    form = InvoiceForm()
+    return render(request, 'invoice_app/invoice_edit.html', {'form': form})

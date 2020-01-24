@@ -27,14 +27,14 @@ Place_CHOICES = (
 class Invoice(models.Model):
 	invoice_id = models.AutoField(primary_key = True)
 	invoice_user_id = "user_id"
-	invoice_date_of_issue = models.DateField()
-	invoice_nr = models.CharField(max_length = 250)
-	invoice_name = models.CharField(max_length = 250)
-	invoice_netto = models.FloatField()
-	invoice_vat = models.FloatField()
-	invoice_brutto = models.FloatField(default = 100)
-	invoice_place = models.CharField(max_length=6, choices=Place_CHOICES, default='Nie dotyczy')
-	invoice_file = models.FileField()
+	invoice_date_of_issue = models.DateField('Data wystawienia')
+	invoice_nr = models.CharField("Numer faktur", max_length = 250)
+	invoice_name = models.CharField("Nazwa faktury", max_length = 250)
+	invoice_netto = models.FloatField("Kwota netto")
+	invoice_vat = models.FloatField("Vat")
+	invoice_brutto = models.FloatField("Kwota brutto", default = 100)
+	invoice_place = models.CharField("Miejsce którego dotyczy", max_length=20, choices=Place_CHOICES, default='Nie dotyczy')
+	invoice_file = models.FileField("Plik faktury")
 
 	def __unicode__(self):
 		return self.invoice_nr

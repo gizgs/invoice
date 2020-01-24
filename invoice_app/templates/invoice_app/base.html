@@ -13,7 +13,11 @@
 
 </head>
 <body>
-	<h1> To jest jest nagłówek </h1>
+
+	<div class="page-header">
+		<h1>Wystawiacz faktur</h1>
+		<a href="{% url 'invoice_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> Dodaj fakturę</a>
+	</div>
 
 	 {% block content %}
 	 {% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'invoice_app/base.html' %}
+
+{% block content %}
+    <h2>Nowa faktura</h2>
+    <form method="POST" class="invoice-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Zapisz</button>
+    </form>
+{% endblock %}

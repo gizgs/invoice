@@ -3,6 +3,8 @@ from django.utils import timezone
 from .models import Articles
 from .models import Invoice
 from .forms import InvoiceForm
+from django.shortcuts import redirect
+
 
 # Create your views here.
 def post_list(request):
@@ -18,6 +20,8 @@ def invoice_detail(request, pk):
     invoice = get_object_or_404(Invoice, pk=pk)
     return render(request, 'invoice_app/invoice_detail.html', {'invoice': invoice})
 
+
 def invoice_new(request):
     form = InvoiceForm()
     return render(request, 'invoice_app/invoice_edit.html', {'form': form})
+  

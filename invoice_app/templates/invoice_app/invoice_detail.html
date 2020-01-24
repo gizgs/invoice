@@ -4,6 +4,33 @@
 	<title></title>
 </head>
 <body>
-<p>lalalala</p>
+
+	<h1>Tabela dla faktury nr: {{invoice.invoice_nr}}</h1>
+
+
+	<table border="">
+		<tr>
+			<td>Data wystawienia</td>
+			<td>Numer faktury</td>
+			<td>Nazwa faktury</td>
+			<td>Budowa</td>
+			<td>Kwota netto</td>
+			<td>Kwota Vat</td>
+			<td>Kwota brutto</td>
+		</tr>
+		<tr>
+			<td>{{invoice.invoice_date_of_issue}}</td>
+			<td>{{invoice.invoice_nr}}</td>
+			<td>{{invoice.invoice_name}}</td>
+			<td>{{invoice.invoice_place}}</td>
+			<td>{{invoice.invoice_netto}}</td>
+			<td>{{invoice.invoice_vat}}</td>
+			<td>{{invoice.invoice_brutto}}</td>
+		</tr>
+
+	</table><br><br>
+
+	<a href="http://127.0.0.1:8000/">Wróć</a>
+
 </body>
 </html>

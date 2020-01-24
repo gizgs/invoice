@@ -16,13 +16,17 @@ def invoice_list(request):
 	return render(request, 'invoice_app/post_list.html', {'invoice' : invoice})
 
 def invoice_detail(request, pk):
-	#Invoice.objects.get(pk=pk)
     invoice = get_object_or_404(Invoice, pk=pk)
     return render(request, 'invoice_app/invoice_detail.html', {'invoice': invoice})
 
 
 def invoice_new(request):
-    form = InvoiceForm(request.POST or None)
-    if form.is_valid():
-        form.save()
+    if request.method == "POST":
+        form = InvoiceForm(request.POST)
+        if form.is_valid():
+            invoice = form.save(commit=False)
+            invoice.save()
+            return redirect('invoice_detail', pk=invoice.pk)
+    else:
+        form = InvoiceForm()
     return render(request, 'invoice_app/invoice_edit.html', {'form': form})

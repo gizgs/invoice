@@ -30,3 +30,16 @@ def invoice_new(request):
     else:
         form = InvoiceForm()
     return render(request, 'invoice_app/invoice_edit.html', {'form': form})
+
+
+def invoice_edit(request, pk):
+    invoice = get_object_or_404(Invoice, pk=pk)
+    if request.method == "POST":
+        form = InvoiceForm(request.POST, instance=invoice)
+        if form.is_valid():
+            invoice = form.save(commit=False)
+            invoice.save()
+            return redirect('invoice_detail', pk=invo.pk)
+    else:
+        form = InvoiceForm(instance=invoice)
+    return render(request, 'invoice_app/invoice_edit.html', {'form': form})

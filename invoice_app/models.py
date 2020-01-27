@@ -2,20 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Employee(models.Model):
-	employee_id = models.TextField()
-	user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-
-
-class Articles(models.Model):
-	title = models.CharField(max_length = 150, verbose_name = "tytuł")
-	content = models.TextField(verbose_name = "zawartość")
-	published = models.DateTimeField (verbose_name = "data publikacji")
-
-	def __unicode__(self):
-		return self.title
-
-
 Place_CHOICES = (
     ('Żagań', 'Żagań'),
     ('Krasiczyn', 'Krasiczyn'),
@@ -26,7 +12,6 @@ Place_CHOICES = (
 
 class Invoice(models.Model):
 	invoice_id = models.AutoField(primary_key = True)
-	invoice_user_id = "user_id"
 	invoice_date_of_issue = models.DateField('Data wystawienia')
 	invoice_nr = models.CharField("Numer faktur", max_length = 250)
 	invoice_name = models.CharField("Nazwa faktury", max_length = 250)

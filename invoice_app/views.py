@@ -1,15 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Articles
 from .models import Invoice
-from .forms import InvoiceForm
+from .forms import InvoiceForm, LoginForm
 from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
+
+
 
 
 # Create your views here.
-def post_list(request):
-	articles = Articles.objects.filter(published__lte=timezone.now()).order_by('published')
-	return render(request, 'invoice_app/post_list.html', {'articles' : articles})
 
 def invoice_list(request):
 	invoice = Invoice.objects.order_by('invoice_nr')
@@ -43,3 +43,21 @@ def invoice_edit(request, pk):
     else:
         form = InvoiceForm(instance=invoice)
     return render(request, 'invoice_app/invoice_edit.html', {'form': form})
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username = cd['username'], password = cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse('Uwierzytelnienie zakończyło się sukcesem')
+                else:
+                    return HttpResponse('Konto jest zablokowane')
+            else:
+                return HttpResponse('Nieprawidłowe dane uwierzytelniające')
+    else:
+        form = LoginForm()
+    return render(request, 'invoice_app/login.html', {'form': form})

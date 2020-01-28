@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Invoice
 from .forms import InvoiceForm, LoginForm
 from django.shortcuts import redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 
 
@@ -53,7 +53,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse('Uwierzytelnienie zakończyło się sukcesem')
+                    return HttpResponseRedirect('http://127.0.0.1:8000')
                 else:
                     return HttpResponse('Konto jest zablokowane')
             else:
